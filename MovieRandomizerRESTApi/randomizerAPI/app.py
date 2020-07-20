@@ -1,5 +1,13 @@
+import os
 from flask import Flask
+from dotenv import load_dotenv
+
+# Import env variables
+load_dotenv()
+
+# Set up application and configuration
 app = Flask(__name__)
+app.config.from_object(os.environ.get('APP_SETTINGS'))
 
 
 @app.route('/')

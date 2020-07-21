@@ -8,15 +8,14 @@ class Movie(db.Model):
     movieName = db.Column(db.String())
     movieDirector = db.Column(db.String())
     movieYear = db.Column(db.String())
-
-    allMovies = db.Column(JSON)
+    dateWatched = db.Column(db.String())
 
     # Initialize Movie class
-    def __init__(self, movieName, movieDirector, movieYear, allMovies):
+    def __init__(self, movieName, movieDirector, movieYear, dateWatched):
         self.movieName = movieName
         self.movieDirector = movieDirector
         self.movieYear = movieYear
-        self.allMovies = allMovies
+        self.dateWatched = dateWatched
 
     # Represents the object when queried
     def __repr__(self):

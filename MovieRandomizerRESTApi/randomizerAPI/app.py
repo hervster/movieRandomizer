@@ -50,8 +50,8 @@ def returnRandomizedMovieGoogle():
         
         movie = randomizeMovie()
         gRequest = request.get_json()
-        text = "You are watching " + movie['movieName'] + ", directed by " + movie['movieDirector'] + ", in " + movie['movieYear'] + "."
-        print(gRequest)
+        text = "You are watching " + movie['title'] + ", directed by " + movie['director'] + ", in " + movie['year'] + "."
+        
         return {
             "session": {
                 "id": gRequest['session']['id'],

@@ -38,15 +38,14 @@ def hello_name(name):
 # For google assistant api
 @app.route('/randomMovieGoogle', methods=['GET','POST'])
 def returnRandomizedMovieGoogle():
+    global movieList
     if request.method == 'GET':
-        global movieList
         movieList = pullData() # Array
         
         movie = randomizeMovie()
         return {"message": "success", "data" : movie}
 
     else:    
-        global movieList
         movieList = pullData() # Array
         
         movie = randomizeMovie()

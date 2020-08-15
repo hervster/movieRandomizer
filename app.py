@@ -49,7 +49,7 @@ def returnRandomizedMovieGoogle():
         movieList = pullData() # Array
         
         movie = randomizeMovie()
-        gRequest = request.get_json
+        gRequest = request.get_json()
         print(gRequest)
         return {
             "session": {

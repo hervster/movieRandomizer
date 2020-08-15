@@ -59,8 +59,8 @@ def returnRandomizedMovieGoogle():
             "prompt": {
                 "override": False,
                 "firstSimple": {
-                    "speech": "You are watching \""+movie.movieName+"\", directed by \""+movie.movieDirector+"\", in \""+movie.movieYear+"\".",
-                    "text": "You are watching \""+movie.movieName+"\", directed by \""+movie.movieDirector+"\", in \""+movie.movieYear+"\"."  
+                    "speech": "You are watching \""+movie['movieName']+"\", directed by \""+movie['movieDirector']+"\", in \""+movie['movieYear']+"\".",
+                    "text": "You are watching \""+movie['movieName']+"\", directed by \""+movie['movieDirector']+"\", in \""+movie['movieYear']+"\"."  
                 }
             },
             "scene": {

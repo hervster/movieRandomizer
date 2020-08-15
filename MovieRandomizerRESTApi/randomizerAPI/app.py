@@ -34,6 +34,43 @@ def testMeth():
 def hello_name(name):
     return "Hello {}!".format(name)
 
+# For google assistant api
+@app.route('/randomMovieGoogle', methods='GET','POST')
+def returnRandomizedMovieGoogle():
+    if request.method == 'GET':
+        global movieList
+        movieList = pullData() # Array
+        
+        movie = randomizeMovie()
+        return {"message": "success", "data" : movie}
+
+    else:    
+        global movieList
+        movieList = pullData() # Array
+        
+        movie = randomizeMovie()
+        
+        return {
+            "session": {
+                "id": request.session.id,
+                "params": request.session.params
+            },
+            "prompt": {
+                "override": false,
+                "firstSimple": {
+                    "speech": "You are watching \""+movie.movieName+"\", directed by \""+movie.movieDirector+"\", in \""movie.movieYear"\".",
+                    "text": "You are watching \""+movie.movieName+"\", directed by \""+movie.movieDirector+"\", in \""movie.movieYear"\"."  
+                }
+            },
+            "scene": {
+                "name": request.scene.name,
+                "slots":request.scene.slots,
+                "next": {
+                    "name": "actions.scene.END_CONVERSATION"
+                }
+            }
+        }
+
 
 @app.route('/randomMovie')
 def returnRandomizedMovie():

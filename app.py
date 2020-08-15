@@ -53,8 +53,8 @@ def returnRandomizedMovieGoogle():
         print(gRequest)
         return {
             "session": {
-                "id": gRequest.session.id,
-                "params": gRequest.session.params
+                "id": gRequest['session']['id'],
+                "params": gRequest['session']['params']
             },
             "prompt": {
                 "override": false,
@@ -64,8 +64,8 @@ def returnRandomizedMovieGoogle():
                 }
             },
             "scene": {
-                "name": gRequest.scene.name,
-                "slots":gRequest.scene.slots,
+                "name": gRequest['scene']['name'],
+                "slots":gRequest['scene']['slots'],
                 "next": {
                     "name": "actions.scene.END_CONVERSATION"
                 }

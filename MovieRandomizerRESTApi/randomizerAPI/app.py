@@ -50,6 +50,7 @@ def returnRandomizedMovieGoogle():
         
         movie = randomizeMovie()
         gRequest = request.get_json
+        print(gRequest)
         return {
             "session": {
                 "id": gRequest.session.id,

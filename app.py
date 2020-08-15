@@ -50,6 +50,7 @@ def returnRandomizedMovieGoogle():
         
         movie = randomizeMovie()
         gRequest = request.get_json()
+        text = "You are watching " + movie['movieName'] + ", directed by " + movie['movieDirector'] + ", in " + movie['movieYear'] + "."
         print(gRequest)
         return {
             "session": {
@@ -59,8 +60,8 @@ def returnRandomizedMovieGoogle():
             "prompt": {
                 "override": False,
                 "firstSimple": {
-                    "speech": "You are watching \""+movie['movieName']+"\", directed by \""+movie['movieDirector']+"\", in \""+movie['movieYear']+"\".",
-                    "text": "You are watching \""+movie['movieName']+"\", directed by \""+movie['movieDirector']+"\", in \""+movie['movieYear']+"\"."  
+                    "speech": text,
+                    "text": text  
                 }
             },
             "scene": {

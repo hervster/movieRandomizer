@@ -5,6 +5,7 @@ import json
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask import request
 from dotenv import load_dotenv
 
 # Import env variables
@@ -35,7 +36,7 @@ def hello_name(name):
     return "Hello {}!".format(name)
 
 # For google assistant api
-@app.route('/randomMovieGoogle', methods='GET','POST')
+@app.route('/randomMovieGoogle', methods=['GET','POST'])
 def returnRandomizedMovieGoogle():
     if request.method == 'GET':
         global movieList
@@ -49,22 +50,22 @@ def returnRandomizedMovieGoogle():
         movieList = pullData() # Array
         
         movie = randomizeMovie()
-        
+        gRequest = request.get_json
         return {
             "session": {
-                "id": request.session.id,
-                "params": request.session.params
+                "id": gRequest.session.id,
+                "params": gRequest.session.params
             },
             "prompt": {
                 "override": false,
                 "firstSimple": {
-                    "speech": "You are watching \""+movie.movieName+"\", directed by \""+movie.movieDirector+"\", in \""movie.movieYear"\".",
-                    "text": "You are watching \""+movie.movieName+"\", directed by \""+movie.movieDirector+"\", in \""movie.movieYear"\"."  
+                    "speech": "You are watching \""+movie.movieName+"\", directed by \""+movie.movieDirector+"\", in \""+movie.movieYear+"\".",
+                    "text": "You are watching \""+movie.movieName+"\", directed by \""+movie.movieDirector+"\", in \""+movie.movieYear+"\"."  
                 }
             },
             "scene": {
-                "name": request.scene.name,
-                "slots":request.scene.slots,
+                "name": gRequest.scene.name,
+                "slots":gRequest.scene.slots,
                 "next": {
                     "name": "actions.scene.END_CONVERSATION"
                 }

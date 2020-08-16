@@ -52,7 +52,7 @@ def returnRandomizedMovieGoogle():
         gRequest = request.get_json()
         text = "You are watching " + movie['title'] + ", directed by " + movie['director'] + ", in " + movie['year'] + "."
         
-        return {
+        apiData = {
                 "session": {
                     "id": gRequest['session']['id'],
                     "params": gRequest['session']['params']
@@ -72,6 +72,9 @@ def returnRandomizedMovieGoogle():
                     }
                 }
         }
+        payloadData = json.dumps(apiData)
+        return payloadData
+
 
 
 @app.route('/randomMovie')

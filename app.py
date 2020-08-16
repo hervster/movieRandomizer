@@ -53,22 +53,24 @@ def returnRandomizedMovieGoogle():
         text = "You are watching " + movie['title'] + ", directed by " + movie['director'] + ", in " + movie['year'] + "."
         
         return {
-            "session": {
-                "id": gRequest['session']['id'],
-                "params": gRequest['session']['params']
-            },
-            "prompt": {
-                "override": False,
-                "firstSimple": {
-                    "speech": text,
-                    "text": text  
-                }
-            },
-            "scene": {
-                "name": gRequest['scene']['name'],
-                "slots":gRequest['scene']['slots'],
-                "next": {
-                    "name": "actions.scene.END_CONVERSATION"
+            "responseJson": {
+                "session": {
+                    "id": gRequest['session']['id'],
+                    "params": gRequest['session']['params']
+                },
+                "prompt": {
+                    "override": False,
+                    "firstSimple": {
+                        "speech": text,
+                        "text": text  
+                    }
+                },
+                "scene": {
+                    "name": gRequest['scene']['name'],
+                    "slots":gRequest['scene']['slots'],
+                    "next": {
+                        "name": "actions.scene.END_CONVERSATION"
+                    }
                 }
             }
         }

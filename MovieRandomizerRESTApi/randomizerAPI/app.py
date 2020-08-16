@@ -48,9 +48,12 @@ def returnRandomizedMovieGoogle():
     else:    
         movieList = pullData() # Array
         
-        movie = randomizeMovie()
+        try:
+            movie = randomizeMovie()
+            text = "You are watching " + movie['title'] + ", directed by " + movie['director'] + ", in " + movie['year'] + "."
+        except:
+            text = "You ain't watching anything my guy. You're out of movies."
         gRequest = request.get_json()
-        text = "You are watching " + movie['title'] + ", directed by " + movie['director'] + ", in " + movie['year'] + "."
         
         apiData = {
                 "session": {

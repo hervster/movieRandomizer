@@ -53,7 +53,6 @@ def returnRandomizedMovieGoogle():
         text = "You are watching " + movie['title'] + ", directed by " + movie['director'] + ", in " + movie['year'] + "."
         
         return {
-            "responseJson": {
                 "session": {
                     "id": gRequest['session']['id'],
                     "params": gRequest['session']['params']
@@ -72,7 +71,6 @@ def returnRandomizedMovieGoogle():
                         "name": "actions.scene.END_CONVERSATION"
                     }
                 }
-            }
         }
 
 
